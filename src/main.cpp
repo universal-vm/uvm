@@ -12,6 +12,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
 #include "./debug.h"
 #include "./uef.h"
 
@@ -46,6 +47,7 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
+			/*
 			DEBUG("File was found, now it is time to read the file.");
 			fileobj.seekg (0, fileobj.end);
 			DEBUG("Getting the length of the file...");
@@ -58,6 +60,7 @@ int main(int argc, char *argv[])
 			char *buffer = new char[length];
 			DEBUG(buffer);
 			cout << buffer[0] << buffer[1];
+			
 			DEBUG("Checking if UEF header in the executable file is valid...");
 			if(check_uef(buffer) == true)
 			{
@@ -69,6 +72,23 @@ int main(int argc, char *argv[])
 				ERROR("Not a valid UVM executable file!");
 				DEBUG("The UEF header is NOT valid...");
 			}
+			*/
+			/*
+			 *	A UEF file should be smaller than what fits in a computer's RAM. I plan on
+			 *	making it so thbufferat UEF files are stored inside a .UVM file which is just the
+			 *	same format as a .ZIP file. The UEF files can be small, and then be loaded
+			 *	into RAM, and unloaded.
+			 */
+			//ifstream samefile(argv[1], ios::binary | ios::ate);
+			
+			DEBUG("Creating a variable called `c` that can contain a single character...");
+			char c;
+			DEBUG("Looping through each character in the file and placing it in the variable named `c`.");
+			//char buffer[];
+			int i;
+			while (fileobj.get(c))
+				i++;
+			
 		}
 	}
 	return 0;
